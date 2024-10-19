@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">picoBotella</string>
+    <string name="bottle_icon_desc">bottle_icon_desc</string>
 </resources>
