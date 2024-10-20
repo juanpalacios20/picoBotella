@@ -4,21 +4,33 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
 class SplashActivity : AppCompatActivity() {
+    private val splashTimeOut: Long = 5000 // 5 segundos
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        val bottleIcon: ImageView = findViewById(R.id.bottleIcon)
+
+        // Carga la animación de rotación
+        val rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.animated_bottle)
+
+        // Inicia la animación
+        bottleIcon.startAnimation(rotateAnimation)
 
         // Desactivar la toolbar
         supportActionBar?.hide()
 
         // Esperar 5 segundos antes de cambiar a la MainActivity
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }, 5000) // 5000 milisegundos = 5 segundos
+        Handler().postDelayed({
+            // Iniciar la actividad principal después de 5 segundos
+            val intent = Intent(this, HomeActivity::class.java) // Cambia InicioActivity por el nombre de tu actividad principal
+            startActivity(intent)
+            finish() // Cierra la SplashActivity para que no vuelva al presionar atrás
+        }, splashTimeOut)
     }
 }
 
