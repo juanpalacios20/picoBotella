@@ -29,6 +29,11 @@
             android:exported="true">
             <!-- No necesitas un intent-filter aquí porque no será la actividad de lanzamiento -->
         </activity>
+        
+        <activity android:name=".InstructionsActivity"
+            android:exported="true"
+            >
+        </activity>
 
     </application>
 

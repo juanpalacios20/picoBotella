@@ -18,12 +18,17 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.home)
 
         val ReviewButton = findViewById<ImageButton>(R.id.icon_star)
-
         ReviewButton.setOnClickListener {
             val url = "https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_CO&pli=1"
             val intent = Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse(url)
             }
+            startActivity(intent)
+        }
+
+        val instructionsButton = findViewById<ImageButton>(R.id.icon_instructions)
+        instructionsButton.setOnClickListener{
+            val intent = Intent(this, InstructionsActivity::class.java)
             startActivity(intent)
         }
 
