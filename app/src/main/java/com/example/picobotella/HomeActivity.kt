@@ -1,6 +1,5 @@
 package com.example.picobotella
 
-import android.media.Image
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.os.CountDownTimer
@@ -9,8 +8,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.content.Intent
 import android.net.Uri
-import android.view.View
-import android.widget.Button
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +27,18 @@ class HomeActivity : AppCompatActivity() {
         instructionsButton.setOnClickListener{
             val intent = Intent(this, InstructionsActivity::class.java)
             startActivity(intent)
+        }
+
+        val shareButton = findViewById<ImageButton>(R.id.icon_share)
+        shareButton.setOnClickListener{
+            val enlaceApp = "https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_CO&pli=1"
+
+            val intentCompartir = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_SUBJECT, "App pico botella")
+                putExtra(Intent.EXTRA_TEXT, "Solo los valientes lo juegan!! $enlaceApp")
+            }
+            startActivity(Intent.createChooser(intentCompartir, "Compartir usando"))
         }
 
         val pressMeButton: ImageButton = findViewById(R.id.btnPressMe)
