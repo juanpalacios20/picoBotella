@@ -41,6 +41,12 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(intentCompartir, "Compartir usando"))
         }
 
+        val challenges = findViewById<ImageButton>(R.id.icon_add_challenges)
+        challenges.setOnClickListener{
+            val intent = Intent(this, ManagementChallenges::class.java)
+            startActivity(intent)
+        }
+
         val pressMeButton: ImageButton = findViewById(R.id.btnPressMe)
         val blinkAnimation = AnimationUtils.loadAnimation(this, R.anim.blink)
         pressMeButton.startAnimation(blinkAnimation)

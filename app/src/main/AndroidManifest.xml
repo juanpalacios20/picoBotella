@@ -35,6 +35,11 @@
             >
         </activity>
 
+        <activity android:name=".ManagementChallenges"
+            android:exported="true"
+            >
+        </activity>
+
     </application>
 
 </manifest>
